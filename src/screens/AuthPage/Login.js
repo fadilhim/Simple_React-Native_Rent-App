@@ -25,7 +25,7 @@ class LoginScreen extends Component{
                     secureTextEntry={true}
                     style={styles.inputField}
                 />
-                <TouchableOpacity>
+                <TouchableOpacity title='Login' onPress={() => this.props.navigation.navigate('Tabs') }>
                     <Text style={{color:'white', marginTop: 10}}>Login</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={()=> this.props.navigation.navigate('SignUp')} >
