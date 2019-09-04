@@ -4,7 +4,7 @@ import { Image, View, Text, StatusBar, TouchableOpacity, StyleSheet, TextInput, 
 // import { Container, Fab, Input, Item } from 'native-base';
 // import { connect } from 'react-redux'
 
-class Login extends Component{
+class LoginScreen extends Component{
     render() {
         return(
             <View
@@ -28,7 +28,7 @@ class Login extends Component{
                 <TouchableOpacity>
                     <Text style={{color:'white', marginTop: 10}}>Login</Text>
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=> this.props.navigation.navigate('SignUp')} >
                     <Text style={{color:'white', marginTop: 10}}>SignUp</Text>
                 </TouchableOpacity>
             </View>
@@ -38,22 +38,22 @@ class Login extends Component{
 }
 
 const styles = StyleSheet.create({
-inputField: {
-    width: 280,
-    color: 'white',
-    borderColor: 'white',
-    marginTop: 5
-},
-Wrapper : {
-    flex:1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#1F3A93'
-},
-text :{
-    color: 'blue',
-    fontSize: 23
-}
+    inputField: {
+        width: 280,
+        color: 'white',
+        borderColor: 'white',
+        marginTop: 5
+    },
+    Wrapper : {
+        flex:1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#1F3A93'
+    },
+    text :{
+        color: 'blue',
+        fontSize: 23
+    }
 });
 
-export default  Login
+export default  LoginScreen

@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
 
-class SignUp extends Component{
+class SignUpScreen extends Component{
     render(){
         return(
             <View
@@ -49,4 +49,4 @@ text :{
 }
 });
 
-export default SignUp
+export default SignUpScreen

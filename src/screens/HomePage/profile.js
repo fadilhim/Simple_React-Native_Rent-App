@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 
-class Profile extends Component{
+class ProfileScreen extends Component{
     render(){
         return(
             <View>
@@ -15,4 +15,4 @@ class Profile extends Component{
     }
 }
 
-export default Profile
+export default ProfileScreen
