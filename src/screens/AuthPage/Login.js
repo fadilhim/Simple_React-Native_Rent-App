@@ -24,14 +24,15 @@ class LoginScreen extends Component{
     }
 
     handleSubmit = () => {
+        console.log('lf', this.state.LoginForm)
         const data = this.state.LoginForm
         this.props.dispatch(login(data))
             .then(res => {
                 if(res.value.data.status === 401){
-                    this.setState({
+                    // this.setState({
                         // modalLoginFalse: true
                         console.log('gagal')
-                    })
+                    // })
                 }else{
                     // localStorage.setItem("token", res.action.payload.data.token)
                     this.loggingIn()
