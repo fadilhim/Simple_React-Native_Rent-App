@@ -6,7 +6,23 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 // import { connect } from 'react-redux'
 
 class SignUpScreen extends Component{
+    constructor(props) {
+        super(props)
+        this.state = {
+            SignUpForm: {}
+        }
+    }
+
+    handleChange = (name, value) => {
+        let newFormData = {...this.state.SignUpForm}
+        newFormData[name] = value
+        this.setState({
+            SignUpForm: newFormData
+        })
+    }
+
     render() {
+        console.log(this.state.SignUpForm)
         return(
             <View behavior="padding" style={styles.Wrapper}>
                 <View style={styles.bodyWrapper}>
@@ -19,12 +35,14 @@ class SignUpScreen extends Component{
                             underlineColorAndroid='grey'
                             placeholderTextColor='grey'
                             style={styles.inputField}
+                            onChangeText={text => this.handleChange( 'username', text )}
                         />
                         <TextInput 
                             placeholder='fullname'
                             underlineColorAndroid='grey'
                             placeholderTextColor='grey'
                             style={styles.inputField}
+                            onChangeText={text => this.handleChange( 'fullname', text )}
                         />
                         <TextInput
                             placeholder='email'
@@ -32,6 +50,7 @@ class SignUpScreen extends Component{
                             placeholderTextColor='grey'
                             keyboardType='email-address'
                             style={styles.inputField}
+                            onChangeText={text => this.handleChange( 'email', text )}
                         />
                         <TextInput
                             placeholder='password'
@@ -39,20 +58,16 @@ class SignUpScreen extends Component{
                             placeholderTextColor='grey'
                             secureTextEntry={true}
                             style={styles.inputField}
+                            onChangeText={text => this.handleChange( 'password', text )}
                         />
                     </View>
                     <View style={{alignItems: 'flex-end'}}>
-                        <Button style={styles.SignInButton} dark title='Login' onPress={() => this.props.navigation.navigate('Tabs')} >
-                            <Text style={{color:'white', marginTop: 10}}>Login</Text>
+                        <Button style={styles.SignUpButton} dark title='Login' onPress={() => this.props.navigation.navigate('Login')} >
+                            <Text style={{color:'white', marginTop: 10}}>Sign Up</Text>
                         </Button>
                     </View>
                 </View>
                 <View style={styles.footerWrapper}>
-                    <View >
-                        <TouchableOpacity onPress={()=> this.props.navigation.navigate('Login')} >
-                            <Text style={styles.text}>Login</Text>
-                        </TouchableOpacity>
-                    </View>
                     <View >
                         <TouchableOpacity onPress={()=> this.props.navigation.navigate('ForgotPass')} >
                             <Text style={styles.text}>Forgot Password</Text>
@@ -95,12 +110,10 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         marginTop: 5
     },
-    SignInButton: {
-        backgroundColor: 'red',
-        borderRadius: 50,
+    SignUpButton: {
         justifyContent: 'center',
-        alignItems: 'center',
-        padding: 0,
+        alignContent: 'center',
+        padding: 10,
     },
     text :{
         color: '#4B4C72',

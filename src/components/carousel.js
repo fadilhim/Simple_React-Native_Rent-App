@@ -49,6 +49,10 @@ export default class BookCarousel extends React.Component {
             </TouchableHighlight>
             <View>
                 <Carousel
+                    // activeSlideOffset={40}
+                    autoplay={true}
+                    autoplayDelay={3}
+                    lockScrollWhileSnapping={true}
                     ref={ref => this.carousel = ref}
                     data={this.state.carouselItems}
                     sliderWidth={250}

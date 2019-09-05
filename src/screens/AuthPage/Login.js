@@ -3,9 +3,49 @@ import React, { Component } from 'react'
 import { View, Text,TouchableOpacity, StyleSheet, TextInput, Modal, ScrollView, FlatList, StatusBar, Image, } from 'react-native'
 import { Button, Container, Fab, Input, Item } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome'
-// import { connect } from 'react-redux'
+import { connect } from 'react-redux'
+
+import { login } from '../../redux/actions/user'
 
 class LoginScreen extends Component{
+    constructor(props) {
+        super(props)
+        this.state = {
+            LoginForm: {},
+        }
+    }
+
+    handleChange = (name, value) => {
+        let newFormData = {...this.state.LoginForm}
+        newFormData[name] = value
+        this.setState({
+            LoginForm: newFormData
+        })
+    }
+
+    handleSubmit = () => {
+        const data = this.state.LoginForm
+        this.props.dispatch(login(data))
+            .then(res => {
+                if(res.value.data.status === 401){
+                    this.setState({
+                        // modalLoginFalse: true
+                        console.log('gagal')
+                    })
+                }else{
+                    // localStorage.setItem("token", res.action.payload.data.token)
+                    this.loggingIn()
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
+
+    loggingIn = () => {
+        this.props.navigation.navigate('Tabs')
+    }
+
     render() {
         return(
             <View behavior="padding" style={styles.Wrapper}>
@@ -20,6 +60,7 @@ class LoginScreen extends Component{
                             placeholderTextColor='grey'
                             keyboardType='email-address'
                             style={styles.inputField}
+                            onChangeText={(text) => this.handleChange( 'email', text )}
                         />
                         <TextInput
                             placeholder='password'
@@ -27,10 +68,11 @@ class LoginScreen extends Component{
                             placeholderTextColor='grey'
                             secureTextEntry={true}
                             style={styles.inputField}
+                            onChangeText={(text) => this.handleChange( 'password', text )}
                         />
                     </View>
                     <View style={{alignItems: 'flex-end'}}>
-                        <Button style={styles.SignInButton} dark title='Login' onPress={() => this.props.navigation.navigate('Tabs')} >
+                        <Button style={styles.SignInButton} dark title='Login' onPress={() => this.handleSubmit()} >
                             <Text style={{color:'white', marginTop: 10}}>Login</Text>
                         </Button>
                     </View>
@@ -83,17 +125,19 @@ const styles = StyleSheet.create({
         marginTop: 5
     },
     SignInButton: {
-        backgroundColor: 'red',
-        borderRadius: 50,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 0,
+        padding: 10,
     },
     text :{
         color: '#4B4C72',
         fontSize: 15,
         textDecorationLine: 'underline'
     },
-});
+})
 
-export default  LoginScreen
+const mapStateToProps = state => {
+    return{
+        user: state.users
+    }
+}
+
+export default connect (mapStateToProps) (LoginScreen)

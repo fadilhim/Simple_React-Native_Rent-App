@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import cat from './cat'
+import users from './user'
 
-const appReducer = combineReducers({
-    cat
+const reducers = combineReducers({
+    users,
 });
 
-export default appReducer;
+export default reducers
