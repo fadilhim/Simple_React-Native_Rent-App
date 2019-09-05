@@ -1,9 +1,10 @@
 /* eslint-disable prettier/prettier */
 import React, { Component } from 'react'
 import { View, Text,TouchableOpacity, StyleSheet, TextInput, Modal, ScrollView, FlatList, StatusBar, Image, } from 'react-native'
-import { Button, Container, Fab, Input, Item } from 'native-base';
+import { Button, Toast , Container, Fab, Input, Item } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { connect } from 'react-redux'
+import AsyncStorage from '@react-native-community/async-storage'
 
 import { login } from '../../redux/actions/user'
 
@@ -24,17 +25,24 @@ class LoginScreen extends Component{
     }
 
     handleSubmit = () => {
-        console.log('lf', this.state.LoginForm)
         const data = this.state.LoginForm
         this.props.dispatch(login(data))
-            .then(res => {
+            .then(async res => {
                 if(res.value.data.status === 401){
-                    // this.setState({
-                        // modalLoginFalse: true
-                        console.log('gagal')
-                    // })
+                    Toast.show({
+                        text: 'Email or Password is wrong!',
+                        buttonText: 'Ok'
+                    })
                 }else{
-                    // localStorage.setItem("token", res.action.payload.data.token)
+                    const token = res.action.payload.data.token
+                    const tokenI = async token => {
+                        try {
+                            await AsyncStorage.setItem('token', token);
+                        } catch (error) {
+                            // Error retrieving data
+                            console.log(error.message);
+                        }
+                    }
                     this.loggingIn()
                 }
             })
@@ -85,7 +93,7 @@ class LoginScreen extends Component{
                         </TouchableOpacity>
                     </View>
                     <View >
-                        <TouchableOpacity onPress={()=> this.props.navigation.navigate('ForgotPass')} >
+                        <TouchableOpacity onPress={()=> this.props.navigation.navigate('Tabs')} >
                             <Text style={styles.text}>Forgot Password</Text>
                         </TouchableOpacity>
                     </View>

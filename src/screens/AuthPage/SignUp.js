@@ -3,7 +3,10 @@ import React, { Component } from 'react'
 import { View, Text,TouchableOpacity, StyleSheet, TextInput, Modal, ScrollView, FlatList, StatusBar, Image, } from 'react-native'
 import { Button, Container, Fab, Input, Item } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome'
-// import { connect } from 'react-redux'
+
+import { register } from '../../redux/actions/user'
+
+import { connect } from 'react-redux'
 
 class SignUpScreen extends Component{
     constructor(props) {
@@ -19,6 +22,29 @@ class SignUpScreen extends Component{
         this.setState({
             SignUpForm: newFormData
         })
+    }
+
+    handleSubmit = () => {
+        const data = this.state.SignUpForm
+        this.props.dispatch(register(data))
+            .then(res => {
+                if(res.value.data.status === 401){
+                    // this.setState({
+                        // modalLoginFalse: true
+                        console.log('gagal')
+                    // })
+                }else{
+                    // localStorage.setItem("token", res.action.payload.data.token)
+                    this.registered()
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
+
+    registered = () => {
+        this.props.navigation.navigate('Login')
     }
 
     render() {
@@ -62,12 +88,17 @@ class SignUpScreen extends Component{
                         />
                     </View>
                     <View style={{alignItems: 'flex-end'}}>
-                        <Button style={styles.SignUpButton} dark title='Login' onPress={() => this.props.navigation.navigate('Login')} >
+                        <Button style={styles.SignUpButton} dark title='SignUp' onPress={() => this.handleSubmit()} >
                             <Text style={{color:'white', marginTop: 10}}>Sign Up</Text>
                         </Button>
                     </View>
                 </View>
                 <View style={styles.footerWrapper}>
+                    <View >
+                        <TouchableOpacity onPress={()=> this.props.navigation.navigate('Login')} >
+                            <Text style={styles.text}>Login</Text>
+                        </TouchableOpacity>
+                    </View>
                     <View >
                         <TouchableOpacity onPress={()=> this.props.navigation.navigate('ForgotPass')} >
                             <Text style={styles.text}>Forgot Password</Text>
@@ -122,4 +153,10 @@ const styles = StyleSheet.create({
     },
 });
 
-export default  SignUpScreen
+const mapStateToProps = state => {
+    return{
+        user: state.users
+    }
+}
+
+export default connect (mapStateToProps) (SignUpScreen)
