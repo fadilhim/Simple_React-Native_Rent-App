@@ -1,8 +1,9 @@
+/* eslint-disable prettier/prettier */
 import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 // import { createStackNavigator } from 'react-navigation-stack'
 
-import Ionicons from 'react-native-vector-icons'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
 //AuthPage i
 import LoginScreen from '../screens/AuthPage/Login'
@@ -18,24 +19,20 @@ const HomeTabNavigation = createBottomTabNavigator(
         History: HistoryScreen,
         Profile: ProfileScreen,
     },{
-        order:[ 'Home', 'History', 'Profile' ],
-        animationEnabled: true,
         navigationOptions: ({ navigation }) => ({
-            tabBarIcon: ({ focused, horizontal, tintColor }) => {
+            tabBarIcon: ({ tintColor }) => {
                 const { routeName } = navigation.state;
-                let IconComponent = Ionicons;
+                // let IconComponent = Ionicons;
                 let iconName;
                 if (routeName === 'Home') {
-                    iconName = `ios-information-circle${focused ? '' : '-outline'}`;
-                    // Sometimes we want to add badges to some icons.
-                    // You can check the implementation below.
-                    IconComponent = HomeIconWithBadge;
-                } else if (routeName === 'Settings') {
-                    iconName = `ios-options`;
+                    iconName = `home`
+                } else if (routeName === 'History') {
+                    iconName = `time`
+                } else if (routeName = 'Profile') {
+                    iconName = 'person'
                 }
-
                 // You can return any component that you like here!
-                return <IconComponent name={iconName} size={25} color={tintColor} />;
+                return <Ionicons name={iconName} size={25} color={tintColor} />;
             },
         }),
         tabBarOptions: {
