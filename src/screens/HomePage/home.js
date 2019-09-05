@@ -1,26 +1,18 @@
 /* eslint-disable prettier/prettier */
 import React, { Component } from 'react';
-import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import { View } from 'react-native';
 
+import Header from '../../components/header'
 import BookCarousel from '../../components/carousel'
+import BookList from '../../components/BookList'
 
 class HomeScreen extends Component {
-    _renderItem({item,index}){
-        return (
-            <View style={{flex:1,justifyContent:'center',alignItems:'center'}}> 
-                <Image
-                    source={require('../../assets/user-icon.png')}
-                    />
-                <Text style={{color:'#fff'}} >{item.title}</Text>
-            </View>
-        )
-    }
-
     render() {
         return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <View style={{ flex: 1}}>
+                <Header />
                 <BookCarousel />
-                <Text>Home!</Text>
+                <BookList />
             </View>
         );
     }

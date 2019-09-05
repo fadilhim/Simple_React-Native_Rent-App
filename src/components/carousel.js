@@ -31,7 +31,8 @@ export default class BookCarousel extends React.Component {
 
     _renderItem({item,index}){
         return (
-            <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>                 
+            <View style={{flex:1,justifyContent:'center',alignItems:'center' }}>
+                <Image source={require('../assets/user-icon.png')} />
                 <Text style={{color:'#fff'}} >{item.title}</Text>
             </View>
         )
@@ -52,6 +53,7 @@ export default class BookCarousel extends React.Component {
                     data={this.state.carouselItems}
                     sliderWidth={250}
                     itemWidth={250}
+                    itemHeight={1}
                     renderItem={this._renderItem}
                     onSnapToItem = { index => this.setState({activeIndex:index}) }
                 />
@@ -70,11 +72,11 @@ export default class BookCarousel extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 5,
         flexDirection:'row',
         backgroundColor:'#131420',
         alignItems: 'center',
         justifyContent: 'center',
-        height: 100px,
+        maxHeight: 150
     },
 });

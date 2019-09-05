@@ -1,12 +1,13 @@
 /* eslint-disable prettier/prettier */
 import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
-// import { createStackNavigator } from 'react-navigation-stack'
+import { createStackNavigator } from 'react-navigation-stack'
 
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
 //AuthPage i
 import LoginScreen from '../screens/AuthPage/Login'
+import SignUpScreen from '../screens/AuthPage/SignUp'
 
 //HomePage (Routing using Tab Navigation)
 import HomeScreen from '../screens/HomePage/home'
@@ -44,7 +45,8 @@ const HomeTabNavigation = createBottomTabNavigator(
 
 const AppNavigation = createSwitchNavigator(
     {
-        Login: { screen: LoginScreen},
+        Login: { screen: LoginScreen },
+        SignUp: { screen: SignUpScreen },
         Tabs: { screen: HomeTabNavigation }
     }
 )
