@@ -1,11 +1,11 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import { StyleSheet,Text, Image, View,SafeAreaView, TouchableHighlight } from 'react-native';
+import { StyleSheet,Text, Image, View,SafeAreaView, TouchableHighlight } from 'react-native'
+import Carousel from 'react-native-snap-carousel'
+import { connect } from 'react-redux'
 
-import Carousel from 'react-native-snap-carousel';
-
-export default class BookCarousel extends React.Component {
+class BookCarousel extends React.Component {
 
     constructor(props){
         super(props);
@@ -32,7 +32,7 @@ export default class BookCarousel extends React.Component {
     _renderItem({item,index}){
         return (
             <View style={{flex:1,justifyContent:'center',alignItems:'center' }}>
-                <Image source={require('../assets/user-icon.png')} />
+                <Image source={{uri: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1529026760l/39832183.jpg'}} />
                 <Text style={{color:'#fff'}} >{item.title}</Text>
             </View>
         )
@@ -49,7 +49,6 @@ export default class BookCarousel extends React.Component {
             </TouchableHighlight>
             <View>
                 <Carousel
-                    // activeSlideOffset={40}
                     autoplay={true}
                     autoplayDelay={3}
                     lockScrollWhileSnapping={true}
@@ -71,16 +70,21 @@ export default class BookCarousel extends React.Component {
         </SafeAreaView>
         );
     }
-    
 }
+
+const MapStateToProps = state => {
+    return { users: state.users}
+}
+
+export default connect (MapStateToProps) (BookCarousel)
 
 const styles = StyleSheet.create({
     container: {
-        flex: 5,
+        flex: 10,
         flexDirection:'row',
         backgroundColor:'#131420',
         alignItems: 'center',
         justifyContent: 'center',
-        maxHeight: 150
+        height: 200
     },
 });

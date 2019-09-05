@@ -10,75 +10,73 @@ export default class BookList extends Component {
         return (
             <View style={{ flex: 10, backgroundColor:'white' }}>
                 <View style={{ display: 'flex', flexDirection: 'row' ,flexWrap: 'wrap'}}>
-                    <View style={{width: 210}}>
+                    <View style={{width: 210, height: 300}}>
                         <Card>
-                            <CardItem>
-                                <Image source={{uri: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1391120695l/16299.jpg'}} style={{height: 100, width: null, flex: 1}}/>
+                            <CardItem style={{height: 200, width: 205, paddingLeft: 0, paddingRight: 0}} onPress={} >
+                                <Image source={{uri: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1391120695l/16299.jpg'}} style={{height: 200, width: null, flex: 1}}/>
                             </CardItem>
-                            <CardItem>
-                                <Left>
-                                    <Text>Author</Text>
-                                </Left>
+                            <CardItem style={{height: 80}}>
                                 <Body>
+                                    <Text>Author</Text>
                                     <Text>Title</Text>
-                                </Body>
-                                <Right>
                                     <Text>Rating</Text>
-                                </Right>
+                                </Body>
                             </CardItem>
                         </Card>
                     </View>
-                    <View style={{width: 210}}>
+                    <View style={{width: 210, height: 300}}>
                         <Card>
-                            <CardItem>
-                                <Image source={{uri: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1391120695l/16299.jpg'}} style={{height: 100, width: null, flex: 1}}/>
+                            <CardItem style={{height: 200, width: 205, paddingLeft: 0, paddingRight: 0}}>
+                                <Image source={{uri: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1529026760l/39832183.jpg'}} style={{height: 200, width: null, flex: 1}}/>
                             </CardItem>
-                            <CardItem>
-                                <Left>
-                                    <Text>Author</Text>
-                                </Left>
+                            <CardItem style={{height: 80}}>
                                 <Body>
+                                    <Text>Author</Text>
                                     <Text>Title</Text>
-                                </Body>
-                                <Right>
                                     <Text>Rating</Text>
-                                </Right>
+                                </Body>
                             </CardItem>
                         </Card>
                     </View>
-                    <View style={{width: 210}}>
+                    <View style={{width: 210, height: 300}}>
                         <Card>
-                            <CardItem>
-                                <Image source={{uri: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1391120695l/16299.jpg'}} style={{height: 100, width: null, flex: 1}}/>
+                            <CardItem style={{height: 200, width: 205, paddingLeft: 0, paddingRight: 0}}>
+                                <Image source={{uri: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1369453733l/6953508.jpg'}} style={{height: 200, width: null, flex: 1}}/>
                             </CardItem>
-                            <CardItem>
-                                <Left>
-                                    <Text>Author</Text>
-                                </Left>
+                            <CardItem style={{height: 80}}>
                                 <Body>
+                                    <Text>Author</Text>
                                     <Text>Title</Text>
-                                </Body>
-                                <Right>
                                     <Text>Rating</Text>
-                                </Right>
+                                </Body>
                             </CardItem>
                         </Card>
                     </View>
-                    <View style={{width: 210}}>
+                    <View style={{width: 210, height: 300}}>
                         <Card>
-                            <CardItem>
-                                <Image source={{uri: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1391120695l/16299.jpg'}} style={{height: 100, width: null, flex: 1}}/>
+                            <CardItem style={{height: 200, width: 205, paddingLeft: 0, paddingRight: 0}}>
+                                <Image source={{uri: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1320562005l/4214.jpg'}} style={{height: 200, width: null, flex: 1}}/>
                             </CardItem>
-                            <CardItem>
-                                <Left>
-                                    <Text>Author</Text>
-                                </Left>
+                            <CardItem style={{height: 80}}>
                                 <Body>
+                                    <Text>Author</Text>
                                     <Text>Title</Text>
-                                </Body>
-                                <Right>
                                     <Text>Rating</Text>
-                                </Right>
+                                </Body>
+                            </CardItem>
+                        </Card>
+                    </View>
+                    <View style={{width: 210, height: 300}}>
+                        <Card>
+                            <CardItem style={{height: 200, width: 205, paddingLeft: 0, paddingRight: 0}}>
+                                <Image source={{uri: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546910265l/2.jpg'}} style={{height: 200, width: null, flex: 1}}/>
+                            </CardItem>
+                            <CardItem style={{height: 80}}>
+                                <Body>
+                                    <Text>Author</Text>
+                                    <Text>Title</Text>
+                                    <Text>Rating</Text>
+                                </Body>
                             </CardItem>
                         </Card>
                     </View>
