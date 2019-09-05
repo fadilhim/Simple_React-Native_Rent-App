@@ -80,7 +80,7 @@ class LoginScreen extends Component{
                             onChangeText={(text) => this.handleChange( 'password', text )}
                         />
                     </View>
-                    <View style={{alignItems: 'flex-end'}}>
+                    <View style={{alignItems: 'center'}}>
                         <Button style={styles.SignInButton} dark title='Login' onPress={() => this.handleSubmit()} >
                             <Text style={{color:'white', marginTop: 10}}>Login</Text>
                         </Button>
@@ -134,7 +134,15 @@ const styles = StyleSheet.create({
         marginTop: 5
     },
     SignInButton: {
-        padding: 10,
+        marginTop:10,
+        height:45,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom:20,
+        width:250,
+        borderRadius:30,
+        backgroundColor: "#4B4C72",
     },
     text :{
         color: '#4B4C72',

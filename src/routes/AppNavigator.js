@@ -13,10 +13,20 @@ import SignUpScreen from '../screens/AuthPage/SignUp'
 import HomeScreen from '../screens/HomePage/home'
 import HistoryScreen from '../screens/HomePage/history'
 import ProfileScreen from '../screens/HomePage/profile'
+import DetailBookScreen from '../screens/DetailBook'
+
+const HomePage = createStackNavigator(
+    {
+        Home: { screen: HomeScreen },
+        DetailBook: { screen: DetailBookScreen }
+    },{
+        headerMode: "none",
+    }
+)
 
 const HomeTabNavigation = createBottomTabNavigator(
     {
-        Home: HomeScreen,
+        Home: HomePage,
         History: HistoryScreen,
         Profile: ProfileScreen,
     },{
