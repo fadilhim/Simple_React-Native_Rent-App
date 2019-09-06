@@ -16,7 +16,7 @@ class Profile extends Component {
                 <Text style={styles.info}>Admin</Text>
                 <Text style={styles.description}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an, Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an, Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an, Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an, </Text>
                 
-                <TouchableOpacity style={styles.buttonDonateContainer}>
+                <TouchableOpacity style={styles.buttonDonateContainer} onPress={() => this.props.navigation.navigate('DonateBook')}>
                     <Text style={{color: 'white'}}>Donate Book</Text>  
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.buttonContainer}>
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         marginBottom:20,
         width:250,
         borderRadius:30,
-        backgroundColor: "green",
+        backgroundColor: "#4B4C72",
     },
     buttonContainer: {
         marginTop:10,
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
         marginBottom:20,
         width:250,
         borderRadius:30,
-        backgroundColor: "#4B4C72",
+        backgroundColor: "#8B0000",
     },
 })
 

@@ -54,6 +54,8 @@ class BookList extends Component {
                                                     disabled={false}
                                                     maxStars={5}
                                                     rating={book.rating}
+                                                    starSize={20}
+                                                    fullStarColor={'#F3AC13'}
                                                 />
                                             </Body>
                                         </CardItem>
@@ -105,6 +107,7 @@ const styles = StyleSheet.create({
     title: {
         fontWeight: 'bold',
         fontSize: 18,
+        marginBottom: 5
     },
     spinner: {
         marginLeft: 200,
