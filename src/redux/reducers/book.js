@@ -2,7 +2,7 @@
 /* eslint-disable default-case */
 const initialState = {
     booksList: [],
-    bookDetail: [],
+    bookDetail: {},
     searchForm: '',
     errMessage: '',
     isLoading: false,
@@ -67,6 +67,7 @@ const books = ( state = initialState, action) => {
                 errMessage:action.payload.response.data.message
                 }
         case 'RENT_BOOK_USER_FULFILLED':
+            initialState.bookDetail.availability = 2;
             return{
                 ...state,
                 isLoading:false,

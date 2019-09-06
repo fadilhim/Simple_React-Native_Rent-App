@@ -14,13 +14,21 @@ import HomeScreen from '../screens/HomePage/home'
 import HistoryScreen from '../screens/HomePage/history'
 import ProfileScreen from '../screens/HomePage/profile'
 import DetailBookScreen from '../screens/DetailBook'
-// import DonateBookScreen from '../screens/donate'
+import DonateBookScreen from '../screens/donate'
 
 const HomePage = createStackNavigator(
     {
         Home: { screen: HomeScreen },
-        DetailBook: { screen: DetailBookScreen },
-        // DonateBook: { screen: DonateBookScreen }
+        DetailBook: { screen: DetailBookScreen }
+    },{
+        headerMode: "none",
+    }
+)
+
+const ProfilePage = createStackNavigator(
+    {
+        Profile: { screen: ProfileScreen },
+        DetailBook: { screen: DetailBookScreen }
     },{
         headerMode: "none",
     }
@@ -30,7 +38,7 @@ const HomeTabNavigation = createBottomTabNavigator(
     {
         Home: HomePage,
         History: HistoryScreen,
-        Profile: ProfileScreen,
+        Profile: ProfilePage,
     },{
         navigationOptions: ({ navigation }) => ({
             tabBarIcon: ({ tintColor }) => {

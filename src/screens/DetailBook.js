@@ -8,16 +8,10 @@ import { getBookById, rentBookByUser } from '../redux/actions/book'
 class DetailBook extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            // formData : {
-            //     user_id: 8,
-            //     book_id: 80
-            // }
-        }
     }
 
-    componentDidMount = async() => {
-        this.getBookById(rentBookByUser())
+    componentDidMount = () => {
+        this.getBookById()
     }
 
     getBookById = () => {
@@ -26,6 +20,7 @@ class DetailBook extends Component {
 
     handleRent = () => {
         this.props.dispatch(rentBookByUser({ user_id: 8, book_id: this.props.books.bookDetail.book_id }))
+        alert('You requested to rent this book!')
     }
 
     render() {

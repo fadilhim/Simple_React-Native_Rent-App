@@ -2,20 +2,16 @@
 /* eslint-disable eol-last */
 /* eslint-disable prettier/prettier */
 import React, { Component } from 'react'
-import { Image, Text, TouchableOpacity } from 'react-native'
+import { Image, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import { Card, CardItem, Body, View, Spinner } from 'native-base'
 import { connect } from 'react-redux'
+import StarRating from 'react-native-star-rating'
 
 import { getBook } from '../redux/actions/book'
 
 class BookList extends Component {
     constructor(props){
         super(props)
-        this.state = {
-            // books: [],
-            // address: props.address,
-            // search: props.books
-        }
     }
 
     componentDidMount = async () => {
@@ -38,36 +34,84 @@ class BookList extends Component {
         // console.log('render', this.state)
         const books = this.props.books.booksList.data
         return (
-            <View style={{ flex: 10, backgroundColor:'white' }}>
-                <View style={{ display: 'flex', flexDirection: 'row' ,flexWrap: 'wrap'}}>
+            <View style={ styles.container }>
+                <View style={ styles.containerView}>
                     {books ?
-                                books.map((book) => {
-                                    return (
-                                        <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailBook', { book_id: book.book_id})} key={book.book_id}>
-                                        <View style={{width: 210, height: 300}} >
-                                            <Card>
-                                                <CardItem style={{height: 200, width: 205, paddingLeft: 0, paddingRight: 0}} >
-                                                    <Image source={{uri: book.image}} style={{height: 200, width: null, flex: 1}} />
-                                                </CardItem>
-                                                <CardItem style={{height: 80}} >
-                                                    <Body>
-                                                        <Text>{book.title}</Text>
-                                                        <Text>{book.date_released}</Text>
-                                                        <Text>{book.rating}</Text>
-                                                    </Body>
-                                                </CardItem>
-                                            </Card>
-                                        </View>
-                                        </TouchableOpacity>
-                                    )
-                                })
-                        : <View><Spinner color='blue' style={{marginLeft: 200, marginTop: 100}} /></View>
+                        books.map((book) => {
+                            return (
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailBook', { book_id: book.book_id})} key={book.book_id}>
+                                <View style={ styles.cardContainer} >
+                                    <Card transparent>
+                                        <CardItem style={ styles.cardImage } >
+                                            <Image source={{uri: book.image}} style={ styles.image } />
+                                        </CardItem>
+                                        <CardItem style={ styles.cardBody } >
+                                            <Body>
+                                                <Text style={ styles.date }>{new Date(book.date_released).toDateString()}</Text>
+                                                <Text style={ styles.title }>{book.title}</Text>
+                                                {/* <Text>{book.rating}</Text> */}
+                                                <StarRating
+                                                    disabled={false}
+                                                    maxStars={5}
+                                                    rating={book.rating}
+                                                />
+                                            </Body>
+                                        </CardItem>
+                                    </Card>
+                                </View>
+                                </TouchableOpacity>
+                            )
+                        })
+                        : <View><Spinner color='blue' style={ styles.spinner } /></View>
                     }
                 </View>
             </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 10,
+        backgroundColor:'white',
+    },
+    containerView: {
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+    },
+    cardContainer:{
+        width: 210,
+        height: 400,
+    },
+    cardImage: {
+        height: 280,
+        width: 205,
+        paddingLeft: 0,
+        paddingRight: 0
+    },
+    image: {
+        height: 280,
+        width: null,
+        flex: 1,
+        borderRadius: 15
+    },
+    cardBody: {
+        height: 100,
+    },
+    date: {
+        color: 'grey',
+    },
+    title: {
+        fontWeight: 'bold',
+        fontSize: 18,
+    },
+    spinner: {
+        marginLeft: 200,
+        marginTop: 100
+    }
+
+})
 
 const MapStateToProps = state => {
     return {

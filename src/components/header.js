@@ -2,7 +2,7 @@
 /* eslint-disable eol-last */
 /* eslint-disable prettier/prettier */
 import React from 'react'
-import { Text } from 'react-native'
+import { Text, StyleSheet } from 'react-native'
 import { SearchBar } from 'react-native-elements'
 import { View } from 'native-base'
 
@@ -19,20 +19,48 @@ export default class Header extends React.Component {
         const { search } = this.state
 
         return (
-            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor:'white', width: 430}}>
+            <View style={style.container}>
                 <View>
-                    <Text>Bookz</Text>
+                    <Text style={style.text}>Bookz</Text>
                 </View>
                 <View >
                     <SearchBar
-                        placeholder="Search..."
+                        placeholder= 'Search...'
+                        placeholderTextColor= 'grey'
                         onChangeText={this.updateSearch}
                         value={search}
-                        containerStyle={{backgroundColor: 'transparent', width: 270, borderTopWidth: 0, borderBottomWidth: 0, marginTop: 5, alignContent: 'flex-end', justifyContent: 'flex-end', alignItems: 'flex-end'}}
-                        inputContainerStyle={{backgroundColor: 'white'}}
+                        round={true}
+                        containerStyle={style.searchContainer}
+                        inputContainerStyle={style.inputContainer}
                     />
                 </View>
             </View>
         );
     }
 }
+
+const style = StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        backgroundColor:'white',
+        width: 430
+    },
+    text: {
+        fontWeight: 'bold',
+        fontSize: 25,
+        marginLeft: 20
+    },
+    searchContainer: {
+        backgroundColor: 'transparent',
+        width: 270,
+        borderTopWidth: 0,
+        borderBottomWidth: 0,
+        marginTop: 5,
+    },
+    inputContainer: {
+        backgroundColor: '#E5E6EE'
+    }
+})

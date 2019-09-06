@@ -52,7 +52,7 @@ class SignUpScreen extends Component{
             <View behavior="padding" style={styles.Wrapper}>
                 <View style={styles.bodyWrapper}>
                     <View >
-                        <Text style={styles.SignInTitle}>Hi!{'\n'}Welcome!</Text>
+                        <Text style={styles.SignInTitle}>Welcome,{'\n'}Create your{'\n'}account now!</Text>
                     </View>
                     <View>
                         <TextInput 
@@ -93,12 +93,12 @@ class SignUpScreen extends Component{
                     </View>
                 </View>
                 <View style={styles.footerWrapper}>
-                    <View >
+                    <View style={{marginRight: 120}}>
                         <TouchableOpacity onPress={()=> this.props.navigation.navigate('Login')} >
                             <Text style={styles.text}>Login</Text>
                         </TouchableOpacity>
                     </View>
-                    <View >
+                    <View>
                         <TouchableOpacity onPress={()=> this.props.navigation.navigate('ForgotPass')} >
                             <Text style={styles.text}>Forgot Password</Text>
                         </TouchableOpacity>
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     SignInTitle: {
-        fontSize: 40,
+        fontSize: 35,
         textAlign: 'left',
         fontWeight: 'bold',
         color: '#4B4C72',
