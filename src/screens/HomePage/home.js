@@ -22,7 +22,7 @@ class HomeScreen extends Component {
             <View style={{ flex: 1}}>
                 <Header />
                 <BookCarousel />
-                <BookList />
+                <BookList {...this.props} />
             </View>
             </ScrollView>
         );

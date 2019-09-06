@@ -33,15 +33,15 @@ class LoginScreen extends Component{
                         buttonText: 'Ok'
                     })
                 }else{
-                    const token = res.action.payload.data.token
-                    const tokenI = async token => {
-                        try {
-                            await AsyncStorage.setItem('token', token);
-                        } catch (error) {
-                            // Error retrieving data
-                            console.log(error.message);
-                        }
-                    }
+                    // const token = res.action.payload.data.token
+                    // const tokenI = async token => {
+                    //     try {
+                    //         await AsyncStorage.setItem('token', token)
+                    //     } catch (error) {
+                    //         console.log(error.message);
+                    //     }
+                    // }
+                    // this.getBook()
                     this.loggingIn()
                 }
             })
@@ -49,6 +49,16 @@ class LoginScreen extends Component{
                 console.log(error);
             })
     }
+
+    // getBook = () => {
+    //     const search = this.props.search !== null ? '&search='+this.props.search : ''
+    //     const addressSort = this.props.match ? this.props.address+this.props.match.params.id : `${process.env.REACT_APP_HOST}/book/?sortby=book_id`+search
+        
+    //     this.props.dispatch (getBook(addressSort), this.props.search)
+    //     this.setState({
+    //         books: this.props.books.booksList.data
+    //     })
+    // }
 
     loggingIn = () => {
         this.props.navigation.navigate('Tabs')
