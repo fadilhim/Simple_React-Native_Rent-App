@@ -52,6 +52,27 @@ const books = ( state = initialState, action) => {
                 isFulfilled: true,
                 bookDetail: action.payload.data.data[0]
             }
+        case 'RENT_BOOK_USER_PENDING':
+            return{
+                ...state,
+                isLoading:true,
+                isRejected:false,
+                isFulfilled:false,
+            }
+        case 'RENT_BOOK_USER_REJECTED':
+            return{
+                ...state,
+                isLoading:false,
+                isRejected:true,
+                errMessage:action.payload.response.data.message
+                }
+        case 'RENT_BOOK_USER_FULFILLED':
+            return{
+                ...state,
+                isLoading:false,
+                isFulfilled:true,
+                errMessage:action.payload.data.message
+            }
         case 'DONATE_BOOK_PENDING':
             return{
                 ...state,

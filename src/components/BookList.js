@@ -12,9 +12,9 @@ class BookList extends Component {
     constructor(props){
         super(props)
         this.state = {
-            books: [],
-            address: props.address,
-            search: props.books
+            // books: [],
+            // address: props.address,
+            // search: props.books
         }
     }
 
