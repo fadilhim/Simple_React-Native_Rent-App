@@ -48,7 +48,6 @@ class SignUpScreen extends Component{
     }
 
     render() {
-        console.log(this.state.SignUpForm)
         return(
             <View behavior="padding" style={styles.Wrapper}>
                 <View style={styles.bodyWrapper}>
@@ -89,7 +88,7 @@ class SignUpScreen extends Component{
                     </View>
                     <View style={{alignItems: 'flex-end'}}>
                         <Button style={styles.SignUpButton} dark title='SignUp' onPress={() => this.handleSubmit()} >
-                            <Text style={{color:'white', marginTop: 10}}>Sign Up</Text>
+                            <Text style={{color:'white'}}>Sign Up</Text>
                         </Button>
                     </View>
                 </View>
@@ -142,9 +141,16 @@ const styles = StyleSheet.create({
         marginTop: 5
     },
     SignUpButton: {
+        marginTop:10,
+        marginRight: 20,
+        height:45,
+        flexDirection: 'row',
         justifyContent: 'center',
-        alignContent: 'center',
-        padding: 10,
+        alignItems: 'center',
+        marginBottom:20,
+        width:250,
+        borderRadius:30,
+        backgroundColor: "#4B4C72",
     },
     text :{
         color: '#4B4C72',

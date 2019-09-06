@@ -4,7 +4,6 @@ import { View, Text,TouchableOpacity, StyleSheet, TextInput } from 'react-native
 import { Button, Toast } from 'native-base'
 import { connect } from 'react-redux'
 import AsyncStorage from '@react-native-community/async-storage'
-import Icon from 'react-native-vector-icons/FontAwesome'
 
 import { login } from '../../redux/actions/user'
 
@@ -82,7 +81,7 @@ class LoginScreen extends Component{
                     </View>
                     <View style={{alignItems: 'center'}}>
                         <Button style={styles.SignInButton} dark title='Login' onPress={() => this.handleSubmit()} >
-                            <Text style={{color:'white', marginTop: 10}}>Login</Text>
+                            <Text style={{color:'white'}}>Login</Text>
                         </Button>
                     </View>
                 </View>

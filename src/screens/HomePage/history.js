@@ -1,16 +1,23 @@
 /* eslint-disable prettier/prettier */
-import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import React, { Component } from 'react'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
+import { connect } from 'react-redux'
 
-export default class Profile extends Component {
+class DetailBook extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            imgUrl: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546910265l/2.jpg',
+        }
+    }
 
     render() {
         return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Image source={{uri: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546910265l/2.jpg'}} style={styles.backgroundImage} ></Image>
+                <Image source={{uri: this.state.imgUrl }} style={styles.backgroundImage} ></Image>
             </View>
-            <Image style={styles.avatar} source={{uri: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546910265l/2.jpg'}}/>
+            <Image style={styles.avatar} source={{ uri: this.state.imgUrl }}/>
             <View style={styles.titleBox}>
                 <Text style={styles.name}>Harry Potter and The Order of Phoenix</Text>
                 <Text style={styles.info}>20 June 2007</Text>
@@ -91,4 +98,10 @@ const styles = StyleSheet.create({
         borderRadius:30,
         backgroundColor: "#F4CF5D",
     },
-});
+})
+
+const MapStateToProps = state => {
+    return { users: state.users}
+}
+
+export default connect (MapStateToProps) (DetailBook)

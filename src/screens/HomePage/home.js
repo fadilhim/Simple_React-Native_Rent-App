@@ -8,16 +8,12 @@ import BookCarousel from '../../components/carousel'
 import BookList from '../../components/BookList'
 import { ScrollView } from 'react-native-gesture-handler';
 
-// import { getProfile } from '../../redux/actions/user'
-
 class HomeScreen extends Component {
     constructor(props) {
         super(props)
-    }
-
-    componentDidMount = async() => {
-        // await this.props.dispatch(getProfile())
-        // console.log(this.props.users)
+        this.state = {
+            SignUpForm: {}
+        }
     }
 
     render() {

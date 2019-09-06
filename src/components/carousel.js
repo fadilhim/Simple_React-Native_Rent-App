@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 class BookCarousel extends React.Component {
 
     constructor(props){
-        super(props);
+        super(props)
         this.state = {
             carouselItems: [
             {

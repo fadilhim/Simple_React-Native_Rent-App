@@ -3,9 +3,16 @@
 /* eslint-disable prettier/prettier */
 import React, { Component } from 'react'
 import { Image, Text, TouchableOpacity } from 'react-native'
-import { Container, Content, Card, CardItem, Left, Body, Right, View } from 'native-base'
+import { Card, CardItem, Body, View } from 'native-base'
+import { connect } from 'react-redux';
 
-export default class BookList extends Component {
+class BookList extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+
+        }
+    }
 
     handleBookDetail = () => {
         this.props.navigation.navigate('DetailBook')
@@ -85,6 +92,7 @@ export default class BookList extends Component {
                             </CardItem>
                         </Card>
                     </View>
+                    
                     <TouchableOpacity onPress={()=> navigation.navigate('DetailBook')} >
                         <Text>Forgot</Text>
                     </TouchableOpacity>
@@ -93,3 +101,9 @@ export default class BookList extends Component {
         );
     }
 }
+
+const MapStateToProps = state => {
+    return { users: state.users}
+}
+
+export default connect (MapStateToProps) (BookList)

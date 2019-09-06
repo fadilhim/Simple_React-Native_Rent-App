@@ -1,8 +1,9 @@
 /* eslint-disable prettier/prettier */
-import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import React, { Component } from 'react'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
+import { connect } from 'react-redux'
 
-export default class Profile extends Component {
+class Profile extends Component {
 
     render() {
         return (
@@ -95,4 +96,10 @@ const styles = StyleSheet.create({
         borderRadius:30,
         backgroundColor: "#4B4C72",
     },
-});
+})
+
+const MapStateToProps = state => {
+    return { users: state.users}
+}
+
+export default connect (MapStateToProps) (Profile)
