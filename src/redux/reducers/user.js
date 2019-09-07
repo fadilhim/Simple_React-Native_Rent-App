@@ -3,6 +3,8 @@ const initialState = {
     userProfile:{},
     errMessage:'',
     message:'',
+    token:'',
+    status: '',
     isLoading:false,
     isRejected:false,
     isFulfilled:false,
@@ -29,7 +31,9 @@ const user = (state = initialState, action)=>{
                 ...state,
                 isLoading:false,
                 isFulfilled:true,
-                errMessage:action.payload.data.message
+                errMessage:action.payload.data.message,
+                token:action.payload.data.token,
+                status:action.payload.data.status
             }
         case 'REGISTER_PENDING':
             return{

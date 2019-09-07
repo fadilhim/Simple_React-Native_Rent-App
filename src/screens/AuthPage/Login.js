@@ -1,3 +1,4 @@
+/* eslint-disable handle-callback-err */
 /* eslint-disable prettier/prettier */
 import React, { Component } from 'react'
 import { View, Text,TouchableOpacity, StyleSheet, TextInput } from 'react-native'
@@ -15,6 +16,10 @@ class LoginScreen extends Component{
         }
     }
 
+    componentDidMount = async () =>{
+        await AsyncStorage.getItem( 'token', (err, res)=>{ if(res) this.props.navigation.navigate('Home') })
+    }
+
     handleChange = (name, value) => {
         let newFormData = {...this.state.LoginForm}
         newFormData[name] = value
@@ -26,23 +31,15 @@ class LoginScreen extends Component{
     handleSubmit = () => {
         const data = this.state.LoginForm
         this.props.dispatch(login(data))
-            .then(async res => {
-                if(res.value.data.status === 401){
+            .then(() => {
+                if(this.props.users.token !== undefined) {
+                    AsyncStorage.setItem( 'token', this.props.users.token, err => console.log(err))
+                    this.loggingIn()
+                }else if(this.props.users.status === 401){
                     Toast.show({
                         text: 'Email or Password is wrong!',
                         buttonText: 'Ok'
                     })
-                }else{
-                    // const token = res.action.payload.data.token
-                    // const tokenI = async token => {
-                    //     try {
-                    //         await AsyncStorage.setItem('token', token)
-                    //     } catch (error) {
-                    //         console.log(error.message);
-                    //     }
-                    // }
-                    // this.getBook()
-                    this.loggingIn()
                 }
             })
             .catch(function (error) {
@@ -92,7 +89,7 @@ class LoginScreen extends Component{
                         </TouchableOpacity>
                     </View>
                     <View >
-                        <TouchableOpacity onPress={()=> this.props.navigation.navigate('Tabs')} >
+                        <TouchableOpacity onPress={()=> this.loggingIn()} >
                             <Text style={styles.text}>Forgot Password</Text>
                         </TouchableOpacity>
                     </View>
@@ -108,7 +105,6 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent: 'center',
         alignItems: 'center',
-        // backgroundColor: '#1F3A93'
     },
     bodyWrapper: {
         flex: 6,
@@ -152,7 +148,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
     return{
-        user: state.users
+        users: state.users
     }
 }
 
