@@ -3,19 +3,26 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { createStackNavigator } from 'react-navigation-stack'
 
+import React from 'react'
 import { Icon } from 'native-base'
-import React, { Component, Fragment } from 'react'
 
-//AuthPage i
+//Splash Screen for loading
+import SplashScreen from '../screens/Splash'
+
+//AuthPage (using switch Navigator)
 import LoginScreen from '../screens/AuthPage/Login'
 import SignUpScreen from '../screens/AuthPage/SignUp'
 
-//HomePage (Routing using Tab Navigation)
+//HomePage (using Tab Navigator)
 import HomeScreen from '../screens/HomePage/home'
 import HistoryScreen from '../screens/HomePage/history'
 import ProfileScreen from '../screens/HomePage/profile'
-import DetailBookScreen from '../screens/DetailBook'
-import DonateBookScreen from '../screens/DonateBook'
+
+//Dynamic page (using stack Navigator)
+import DetailBookScreen from '../screens/DynamicPage/DetailBook'
+import DonateBookScreen from '../screens/DynamicPage/DonateBook'
+import GenreBookScreen from '../screens/DynamicPage/GenreBook'
+import SearchBookScreen from '../screens/DynamicPage/SearchBook'
 
 const ProfilePage = createStackNavigator(
     {
@@ -29,7 +36,9 @@ const ProfilePage = createStackNavigator(
 const HomePage = createStackNavigator(
     {
         Home: { screen: HomeScreen },
-        DetailBook: { screen: DetailBookScreen }
+        DetailBook: { screen: DetailBookScreen },
+        GenreBook : { screen: GenreBookScreen },
+        SearchBook: { screen: SearchBookScreen },
     },{
         headerMode: "none",
     }
@@ -62,10 +71,10 @@ const HomeTabNavigator = createBottomTabNavigator({
     },
     },{
         tabBarOptions: { 
-        showIcon: true,
-        activeTintColor: '#4B4C72',
-        nactiveTintColor: 'gray',
-        showLabel: false
+            showIcon: true,
+            activeTintColor: '#4B4C72',
+            inactiveTintColor: 'gray',
+            showLabel: false
         },
     })
 
@@ -77,4 +86,11 @@ const AppNavigation = createSwitchNavigator(
     }
 )
 
-export default createAppContainer( AppNavigation );
+const InitialNavigation = createSwitchNavigator(
+    {
+        Splash: { screen: SplashScreen },
+        App: { screen: AppNavigation }
+    }
+)
+
+export default createAppContainer( InitialNavigation );

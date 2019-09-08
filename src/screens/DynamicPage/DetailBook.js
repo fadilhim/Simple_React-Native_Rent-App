@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { ScrollView } from 'react-native-gesture-handler'
 
-import { getBookById, rentBookByUser } from '../redux/actions/book'
+import { getBookById, rentBookByUser } from '../../redux/actions/book'
 class DetailBook extends Component {
     constructor(props) {
         super(props)
@@ -33,7 +33,7 @@ class DetailBook extends Component {
                 <Image style={styles.avatar} source={{ uri: book.image }}/>
                 <View style={styles.titleBox}>
                     <Text style={styles.name}>{book.title}</Text>
-                    <Text style={styles.info}>{book.date_released}</Text>
+                    <Text style={styles.info}>{new Date(book.date_released).toDateString()}</Text>
                 </View>
                 {/* <ScrollView> */}
                 <View style={styles.body}>

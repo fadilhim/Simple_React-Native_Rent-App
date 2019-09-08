@@ -18,13 +18,14 @@ class HomeScreen extends Component {
 
     render() {
         return (
-            <ScrollView>
+            
             <View style={{ flex: 1}}>
-                <Header />
-                <BookCarousel />
-                <BookList {...this.props} />
+                <Header style={{ flex: 1}} {...this.props} />
+                <ScrollView style={{ flex: 11}}>
+                    <BookCarousel />
+                    <BookList {...this.props} />
+                </ScrollView>
             </View>
-            </ScrollView>
         );
     }
 }

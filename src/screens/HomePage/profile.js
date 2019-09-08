@@ -32,14 +32,14 @@ class Profile extends Component {
             <Image style={styles.avatar} source={{uri: 'https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png'}}/>
             <View style={styles.body}>
                 <View style={styles.bodyContent}>
-                    <Text style={styles.name}>Username</Text>
-                    <Text style={styles.info}>Admin</Text>
+                    <Text style={styles.name}>{this.props.users.userProfile.username}</Text>
+                    <Text style={styles.info}>{this.props.users.userProfile.level}</Text>
                     <Text style={styles.descriptionLabel}>Full Name</Text>
-                    <Text style={styles.description}>Fadil Himawan</Text>
+                    <Text style={styles.description}>{this.props.users.userProfile.fullname}</Text>
                     <Text style={styles.descriptionLabel}>User Id</Text>
-                    <Text style={styles.description}>18</Text>
+                    <Text style={styles.description}>{this.props.users.userProfile.id}</Text>
                     <Text style={styles.descriptionLabel}>Email</Text>
-                    <Text style={styles.description}>fadilhimawan@gmail.com</Text>
+                    <Text style={styles.description}>{this.props.users.userProfile.email}</Text>
                     <View style={styles.button}>
                         <TouchableOpacity style={styles.buttonDonateContainer} onPress={() => this.props.navigation.navigate('DonateBook')}>
                             <Text style={{color: 'white'}}>Donate Book</Text>  
