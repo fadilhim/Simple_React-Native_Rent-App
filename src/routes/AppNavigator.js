@@ -24,6 +24,12 @@ import DonateBookScreen from '../screens/DynamicPage/DonateBook'
 import GenreBookScreen from '../screens/DynamicPage/GenreBook'
 import SearchBookScreen from '../screens/DynamicPage/SearchBook'
 
+const GenrePage = createSwitchNavigator(
+    {
+        Genre: { screen: GenreBookScreen}
+    }
+)
+
 const ProfilePage = createStackNavigator(
     {
         Profile: { screen: ProfileScreen },
@@ -37,7 +43,7 @@ const HomePage = createStackNavigator(
     {
         Home: { screen: HomeScreen },
         DetailBook: { screen: DetailBookScreen },
-        GenreBook : { screen: GenreBookScreen },
+        GenreBook : { screen: GenrePage },
         SearchBook: { screen: SearchBookScreen },
     },{
         headerMode: "none",

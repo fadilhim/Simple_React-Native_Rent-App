@@ -40,10 +40,21 @@ export default class Header extends Component {
                             name='heart'
                             type='font-awesome'
                             color='#c55a54'
-                            size={40}
-                            onPress={() => console.log('hello')}
+                            size={35}
+                            onPress={() => this.props.navigation.navigate('GenreBook')}
                         />
-                        <Text>Romance</Text>
+                        <Text style={style.genreName}>Romance</Text>
+                    </View>
+                    <View>
+                        <Icon
+                            raised
+                            name='atom'
+                            type='font-awesome'
+                            color='#c55a54'
+                            size={35}
+                            onPress={() => this.props.navigation.navigate('GenreBook')}
+                        />
+                        <Text style={style.genreName}>Non-Fiction</Text>
                     </View>
                     <View>
                         <Icon
@@ -51,10 +62,54 @@ export default class Header extends Component {
                             name='heart'
                             type='font-awesome'
                             color='#c55a54'
-                            size={40}
-                            onPress={() => console.log('hello')}
+                            size={35}
+                            onPress={() => this.props.navigation.navigate('GenreBook')}
                         />
-                        <Text>Romance</Text>
+                        <Text style={style.genreName}>Fiction</Text>
+                    </View>
+                    <View>
+                        <Icon
+                            raised
+                            name='heart'
+                            type='font-awesome'
+                            color='#c55a54'
+                            size={35}
+                            onPress={() => this.props.navigation.navigate('GenreBook')}
+                        />
+                        <Text style={style.genreName}>Crime</Text>
+                    </View>
+                    <View>
+                        <Icon
+                            raised
+                            name='mask'
+                            type='font-awesome'
+                            color='#c55a54'
+                            size={35}
+                            onPress={() => this.props.navigation.navigate('GenreBook')}
+                        />
+                        <Text style={style.genreName}>Drama</Text>
+                    </View>
+                    <View>
+                        <Icon
+                            raised
+                            name='battle-net'
+                            type='font-awesome'
+                            color='#c55a54'
+                            size={35}
+                            onPress={() => this.props.navigation.navigate('GenreBook')}
+                        />
+                        <Text style={style.genreName}>Sci-fi</Text>
+                    </View>
+                    <View>
+                        <Icon
+                            raised
+                            name='heart'
+                            type='font-awesome'
+                            color='#c55a54'
+                            size={35}
+                            onPress={() => this.props.navigation.navigate('GenreBook')}
+                        />
+                        <Text style={style.genreName}>Mystery</Text>
                     </View>
                 </View>
             </View>
@@ -90,10 +145,19 @@ const style = StyleSheet.create({
         alignSelf: 'center',
         marginRight: 20,
         fontSize: 19,
-        fontWeight: 600,
+        fontWeight: '900',
         color: 'grey',
     },
     searchBody: {
+        flexWrap: 'wrap',
         flexDirection: 'row',
+        justifyContent: 'center',
+        paddingLeft: 5,
+        paddingRight: 5,
+        paddingTop: 15,
+    },
+    genreName: {
+        textAlign: 'center',
+        color: 'grey'
     }
 })
