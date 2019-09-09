@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import { StyleSheet,Text, Image, View,SafeAreaView, TouchableHighlight } from 'react-native'
+import { StyleSheet,Text, Image, View,SafeAreaView } from 'react-native'
 import Carousel from 'react-native-snap-carousel'
 import { connect } from 'react-redux'
 
@@ -41,42 +41,26 @@ class BookCarousel extends React.Component {
     render() {
         return (
         <SafeAreaView style={styles.container}>
-            <TouchableHighlight
-                onPress={
-                    () => { this.carousel._snapToItem(this.state.activeIndex-1)}
-                }>
-                <Image source={require('../assets/back-to.png')}/>
-            </TouchableHighlight>
             <View>
                 <Carousel
                     autoplay={true}
                     autoplayDelay={3}
+                    loop={true}
                     lockScrollWhileSnapping={true}
                     ref={ref => this.carousel = ref}
                     data={this.state.carouselItems}
                     sliderWidth={250}
                     itemWidth={250}
-                    itemHeight={1}
+                    itemHeight={100}
                     renderItem={this._renderItem}
                     onSnapToItem = { index => this.setState({activeIndex:index}) }
+                    
                 />
             </View>
-            <TouchableHighlight            
-                onPress={
-                    () => { this.carousel._snapToItem(this.state.activeIndex+1)}
-                }>
-                <Image source={require('../assets/next-to.png')}/>                
-            </TouchableHighlight>
         </SafeAreaView>
         );
     }
 }
-
-const MapStateToProps = state => {
-    return { users: state.users}
-}
-
-export default connect (MapStateToProps) (BookCarousel)
 
 const styles = StyleSheet.create({
     container: {
@@ -87,4 +71,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         height: 200
     },
-});
+})
+
+const MapStateToProps = state => {
+    return { users: state.users}
+}
+
+export default connect (MapStateToProps) (BookCarousel)

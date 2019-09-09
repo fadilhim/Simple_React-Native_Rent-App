@@ -50,7 +50,7 @@ const HomePage = createStackNavigator(
     }
 )
 
-const HomeTabNavigator = createBottomTabNavigator({
+const HomeTabNavigator = createBottomTabNavigator({ 
     Home: {
         screen: HomePage,
         navigationOptions: {

@@ -85,6 +85,7 @@ export default class Header extends Component {
                             type='font-awesome'
                             color='#c55a54'
                             size={35}
+                            // containerStyle={{ backgroundColor: 'black'}}
                             onPress={() => this.props.navigation.navigate('GenreBook')}
                         />
                         <Text style={style.genreName}>Drama</Text>
