@@ -1,4 +1,4 @@
-/* eslint-disable react/react-in-jsx-scope */
+x/* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable eol-last */
 /* eslint-disable prettier/prettier */
 import React, { Component } from 'react'
