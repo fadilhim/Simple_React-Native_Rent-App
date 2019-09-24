@@ -32,13 +32,13 @@ Rent Book App means to rent book at the library. You can find out newest book.
 
 ## Screenshots
 <div align="center">
-       <img width="250" src="">
-       <img width="250" src="">
+       <img width="250" src="https://im5.ezgif.com/tmp/ezgif-2-80sd9rt3.gif">
+       <img width="250" src="https://im5.ezgif.com/tmp/ezgif-2-82ey311t3.gif">
 </div>
   <br/>
 <div align="center">
-       <img width="250" src="">
-       <img width="250" src="">
+       <img width="250" src="https://im5.ezgif.com/tmp/ezgif-2-82akq910as3.gif">
+       <img width="250" src="https://im5.ezgif.com/tmp/ezgif-2-83os28s0sj8.gif">
 </div>
 
 ## Release APK
